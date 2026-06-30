@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6092521271010396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.5527137e-15, y: 0, z: 0.0000004172325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -637,11 +637,11 @@ MonoBehaviour:
   BaseSprintSpeed: 9
   SpeedMultiplier: 1
   Lives: 3
-  CurrentHealth: 100
+  CurrentHealth: -70
   MaxHealth: 100
   CurrentStamina: 100
   MaxStamina: 100
-  BaseAttackPower: 10
+  BaseAttackPower: 25
   AttackMultiplier: 1
   AttackRange: 3
   AttackCooldown: 1
@@ -686,7 +686,7 @@ MonoBehaviour:
     m_Bits: 1024
   AttackableLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 8704
   CanAttack: 1
   Anim: {fileID: 6712140846911845181}
   PlayerFootstepAudio: {fileID: 1863053097020222024}
