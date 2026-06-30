@@ -1,0 +1,43 @@
+Notes from Lays Perez about Lays Scripts folder of Pirate Noir on 5-30-26
+
+-------------------------------------------------------------------------------------------------
+
+KEY
+
+> = Future Additions
+M_ = Material
+
+-------------------------------------------------------------------------------------------------
+
+CONTROLS
+
+Walk into enemies to kill them
+Walk onto the fourth platform to trigger game win
+
+-------------------------------------------------------------------------------------------------
+
+SUDO CODE
+
+Player must reach kills needed per platform to progress
+When kills needed has been met, platform will start rotating
+>When platform reaches max rotation, platform will sink (-y value)
+>When platform reaches max rotation, players and enemies will slide off it
+When kills needed has been met, platform will spawn in the next platform and enemies
+Player must reach kills needed per the new platform to progress
+>Kills needed goes up by one for each platform spawned in
+Rotation speed goes up by one for each platform spawned in
+Once the forth platform is spawned, no new enemies will spawn
+Win condition will spawn
+Once player reaches win condition, game ends with a victory.
+
+
+-------------------------------------------------------------------------------------------------
+
+SPECS
+
+Platform rotation speed = 1 frame per second
+Base Kills Needed = 2
+Each enemy is assigned to a platform
+Each platform manager has the Platform Progression Script
+Platform game object goes in the platform to rotate script
+Platforms stop rotating at 300 degrees / -60 degrees
