@@ -735,6 +735,26 @@ PrefabInstance:
       propertyPath: AttackableLayer.m_Bits
       value: 8704
       objectReference: {fileID: 0}
+    - target: {fileID: 8847368617279702525, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5527137e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847368617279702525, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847368617279702525, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0000004172325
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847368617279702525, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8847368617279702525, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

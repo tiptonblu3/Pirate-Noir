@@ -163,8 +163,8 @@ MonoBehaviour:
   speed: 7
   speed2: 10
   agent: {fileID: 2770215966151562588}
-  Player: {fileID: 0}
-  player: {fileID: 0}
+  Player: {fileID: 3612770871091723636, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+  player: {fileID: 5296888083960991240, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
   Attack: {fileID: 5190700401815899246}
   Sword: {fileID: 3689651228517456817}
   attackCooldown: 2
@@ -187,7 +187,7 @@ MonoBehaviour:
   lookPos: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
   strafeSpeed: 5
-  enemyWaves: {fileID: 0}
+  enemyWaves: {fileID: 2797073738729191402, guid: e42606a68549ab5429f3ca3116e9a364, type: 3}
   currentState: 0
   ProjectileList: []
   Projectile: {fileID: 3689651228517456817}
@@ -205,8 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttacked
   Enemy: {fileID: 3211098506515728845}
-  Stats: {fileID: 0}
-  Player: {fileID: 0}
+  Stats: {fileID: 5296888083960991240, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+  Player: {fileID: 2393370093522370787, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
 --- !u!1 &2879490357577069534
 GameObject:
   m_ObjectHideFlags: 0
