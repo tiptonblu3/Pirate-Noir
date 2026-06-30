@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6092521271010396}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -597,7 +597,6 @@ GameObject:
   - component: {fileID: 4632178226081566010}
   - component: {fileID: 1863053097020222024}
   - component: {fileID: 1023798812662600941}
-  - component: {fileID: 1491094400745792924}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -649,7 +648,7 @@ MonoBehaviour:
   GrapplingHooks: 0
   Bombs: 0
   Keys: 0
-  Coins: 0
+  Gold: 0
   Score: 0
 --- !u!114 &6685528757163221336
 MonoBehaviour:
@@ -1148,18 +1147,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1491094400745792924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2393370093522370787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21936a6b0db411549a90959d297d8f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
 --- !u!1 &2743417721344866559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,8 +1664,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
   Priority:
-    Enabled: 0
-    m_Value: 0
+    Enabled: 1
+    m_Value: 100
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 20241001
