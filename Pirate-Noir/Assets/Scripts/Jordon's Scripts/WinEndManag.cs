@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 
 public class WinEndManag : MonoBehaviour
@@ -17,6 +18,9 @@ public class WinEndManag : MonoBehaviour
     public StaminaBarUI stambar;
     public PlayerMovement Movement; // Reference to the PlayerMovement component ~F
     public HealthBar healthbar; // Reference to the HealthBar component ~F
+
+    public GameObject firstSelectedWinButton;
+    public GameObject firstSelectedLoseButton;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -71,7 +75,8 @@ public class WinEndManag : MonoBehaviour
         Time.timeScale = 0f;
 
         Debug.Log("You win!");
-
+        EventSystem.current.SetSelectedGameObject(null); // Clear the current selected GameObject
+        EventSystem.current.SetSelectedGameObject(firstSelectedWinButton); // Set the first selected button
 
         
     }
@@ -96,6 +101,8 @@ public class WinEndManag : MonoBehaviour
         Time.timeScale = 0f;
 
         Debug.Log("You lose!");
+        EventSystem.current.SetSelectedGameObject(null); // Clear the current selected GameObject
+        EventSystem.current.SetSelectedGameObject(firstSelectedLoseButton); // Set the first selected button
     }
 
     public IEnumerator FadeInWin()

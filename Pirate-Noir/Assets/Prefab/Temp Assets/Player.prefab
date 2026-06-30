@@ -677,7 +677,7 @@ MonoBehaviour:
   Gravity: -25
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 3839
+    m_Bits: 1224
   GroundCheckRadius: 0.3
   GroundCheckOffset: 0.25
   InteractRange: 3
@@ -948,6 +948,14 @@ MonoBehaviour:
         m_CallState: 1
     m_ActionId: 3d2b4761-18d8-4f83-9595-5f43d976ae60
     m_ActionName: 'Player/Pause[/Keyboard/escape,/Keyboard/backquote]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aa7a55c3-0c6d-4586-b3c6-9866538b0ee3
+    m_ActionName: 'SliderEdit/Left/Right[/XInputControllerWindows/leftStick,/XInputControllerWindows/dpad]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cbb3709f-98d8-4300-b490-d4d6267fef6b
+    m_ActionName: 'SliderEdit/Submit[/XInputControllerWindows/buttonSouth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -15,6 +15,7 @@ public class PauseManagement : MonoBehaviour
 
     #region === Player Movement ===]
     public PlayerMovement Movement; // Reference to the PlayerMovement component ~F
+    public WinEndManag WinEndManag; // Reference to the WinEndManag component 
     #endregion
     
     #region === Ui Transition Pieces ===
@@ -23,7 +24,7 @@ public class PauseManagement : MonoBehaviour
     public CanvasGroup HealthcanvasGroup; //this will be used to fade in and fade out the pause ui
 
     public StaminaBarUI stambar;
-    public HealthBar healthbar; // Reference to the HealthBar component ~F
+    public HealthBar healthbar; // Reference to the HealthBar component 
 
 
     public float fadeDuration = 0.3f; // How many seconds the fade takes
@@ -97,6 +98,9 @@ public class PauseManagement : MonoBehaviour
         
         Movement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>(); // Get the PlayerMovement component from the player Gameobject ~F
         
+        GameObject winend = GameObject.Find("UI"); // Get the canvas group from the gameobject PauseMenu 
+            if (winend != null) WinEndManag = winend.GetComponent<WinEndManag>();
+
 
         GameObject canvgroup = GameObject.Find("PauseMenu"); // Get the canvas group from the gameobject PauseMenu 
             if (canvgroup != null) canvasGroup = canvgroup.GetComponent<CanvasGroup>();
@@ -162,6 +166,10 @@ public class PauseManagement : MonoBehaviour
         //move the images from the closed position to the open position for the pause area 
         //Check if images are there and make the text and buttons appear
 
+        if (WinEndManag.EndGameState) //if the player has won or lost, don't allow them to pause the game
+        {
+            return;
+        }
         
         StartCoroutine(stambar.FadeOutSprint());
         StartCoroutine(healthbar.FadeOutHealth());
