@@ -25,6 +25,10 @@ public class MainMenuMan : MonoBehaviour
 
     public bool ToggleSFXOn = false;
     public AudioSource SFXAS;
+    public RectTransform LadderUI;
+    public float targetTime = 1f; // how long the transition will take
+    public float targetYPosition = -1000f; // the target Y position for the UI to move to
+    public GameObject ButtonsUI;
 
     public void Awake()
     {
@@ -72,15 +76,56 @@ public class MainMenuMan : MonoBehaviour
             isInitializing = false;
 
     }
+    public IEnumerator AnimateMainMenu(string sceneName)
+    {
+        // make ui buttons dissappear
+        //make all the ui background elements lerp downward the screen at a faster speed but stopping after a certain amount of time
+        //then load scene by name
+
+        ButtonsUI.SetActive(false); // Disable the buttons UI
+
+        float elapsedTime = 0f;
+
+        // Keep looping as long as we haven't reached our target duration
+        while (elapsedTime < targetTime)
+        {
+            // Add the time passed since the last frame to see if its passed the cooldown
+            elapsedTime += Time.unscaledDeltaTime;
+
+            // Calculate our progress percentage (between 0.0 and 1.0)
+            float percentage = elapsedTime / targetTime;
+
+            Vector2 currentPos = LadderUI.anchoredPosition;
+            float newY = Mathf.Lerp(currentPos.y, targetYPosition, percentage);
+            
+            
+            LadderUI.anchoredPosition = new Vector2(currentPos.x, newY); // Set the new position
+
+
+
+            // Wait for the very next frame before continuing the loop
+            yield return null;
+        }
+
+        // This is to make sure it doesn't do any fancy decimils and is a perfect int at the end of the fade
+        elapsedTime = targetTime;
+
+        SceneManager.LoadScene(sceneName);
+        Debug.Log("Scene loaded: " + sceneName);
+        
+    }
 
 
     public void LoadSceneByName(string sceneName)
 	{
-		SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName);
         Debug.Log("Scene loaded: " + sceneName);
     }
 
-
+    public void LoadSceneByNameMainMenu(string sceneName)
+	{
+        StartCoroutine(AnimateMainMenu(sceneName));
+    }
 
     public void Quit()
     {
