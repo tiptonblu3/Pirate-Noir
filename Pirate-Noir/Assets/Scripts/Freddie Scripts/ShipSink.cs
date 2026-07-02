@@ -17,13 +17,6 @@ public class ShipSink : MonoBehaviour
     [Header("Rocking")]
     public BoatRock ShipRock;  // Reference to the Boat Rock script
 
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
