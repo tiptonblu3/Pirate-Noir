@@ -42,6 +42,14 @@ public class PlayerMovement : MonoBehaviour
     public float GroundCheckOffset = 0.1f; // Height offset for ground check
     #endregion
 
+    #region === Stair & Slope Snapping ===
+    [Header("Stair & Slope Snapping")]
+    public float MaxStepHeight = 0.4f; // Maximum distance the script will snap down to hit a step
+    private bool WasGroundedLastFrame;
+    private float AirborneTimer = 0f;
+    public float CoyoteTimeDuration = 0.15f; // Grace period before treating player as truly airborne
+    #endregion
+
     #region === Interaction Settings ===
     // Groups interaction-related variables in the Inspector
     [Header("Interaction Settings")]
@@ -181,11 +189,47 @@ public class PlayerMovement : MonoBehaviour
     
     private void CheckGround()
     {
+        /*
         // Create sphere position slightly above feet
         Vector3 SpherePosition = transform.position + Vector3.up * GroundCheckOffset; // Offset sphere upward slightly
 
         // Perform sphere collision check
         IsGrounded = Physics.CheckSphere(SpherePosition, GroundCheckRadius, GroundLayer); // Detect ground collision
+        */
+
+        // Keep track of what we were before updating
+        WasGroundedLastFrame = IsGrounded;
+
+        Vector3 SpherePosition = transform.position + Vector3.up * GroundCheckOffset;
+        IsGrounded = Physics.CheckSphere(SpherePosition, GroundCheckRadius, GroundLayer);
+
+        // --- Ground Snapping Logic ---
+        // If we just lost grounding, but we are moving down/horizontally (not jumping)
+        if (!IsGrounded && WasGroundedLastFrame && VerticalY <= 0)
+        {
+            // Cast a ray downwards from the player's feet position to find a step
+            if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, MaxStepHeight + 0.1f, GroundLayer))
+            {
+                // Ensure the surface normal isn't a steep wall
+                if (Vector3.Angle(hit.normal, Vector3.up) < 45f) 
+                {
+                    IsGrounded = true;
+                    // Snap position down to the step surface
+                    transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+                    VerticalY = -BaseGravity; // Match grounded gravity force
+                }
+            }
+        }
+
+        // --- Coyote Time / Grace Period Tracker ---
+        if (IsGrounded)
+        {
+            AirborneTimer = 0f;
+        }
+        else
+        {
+            AirborneTimer += Time.fixedDeltaTime;
+        }
     }
 
     #endregion
