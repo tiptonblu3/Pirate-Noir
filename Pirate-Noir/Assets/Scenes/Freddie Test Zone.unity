@@ -19480,6 +19480,10 @@ PrefabInstance:
       propertyPath: WinEndManag
       value: 
       objectReference: {fileID: 8845067030423063951}
+    - target: {fileID: 6685528757163221336, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+      propertyPath: StepCheckDistance
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8847368617279702525, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
