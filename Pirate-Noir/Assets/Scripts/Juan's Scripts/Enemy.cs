@@ -86,7 +86,7 @@ public class Enemy : MonoBehaviour
         maxHealth = health;
         Sword.SetActive(false); // sword is disabled at the start, will be enabled when attacking, this will probably change in later versions
 
-        //animator = GetComponentInChildren<Animator>();
+        
         
         AttackPhaseSqrRange = AttackPhaseRange * AttackPhaseRange;
         FarSqrRange = FarRange * FarRange;
@@ -159,6 +159,8 @@ public class Enemy : MonoBehaviour
             break;
             
         }
+
+        UpdateAnimations();
 
         if(Distance <= AttackPhaseSqrRange)
         {
@@ -251,6 +253,7 @@ public class Enemy : MonoBehaviour
             StopCoroutine(behaviorCoroutine); // stop choosing behavior when chasing player, this MIGHT change later.
             behaviorCoroutine = null;
         }
+
 
         // once player is detected, follow him, duh
         agent.SetDestination(Player.position);
@@ -562,6 +565,38 @@ public class Enemy : MonoBehaviour
 
         agent.ResetPath();
         agent.isStopped = false;
+    }
+
+    public void UpdateAnimations()
+    {
+        animator.SetBool("IsIdle", false);
+        animator.SetBool("IsWalking", false);
+        animator.SetBool("IsRunning", false);
+        animator.SetBool("IsAttacking", false);
+        animator.SetBool("IsStrafingLeft", false);
+        animator.SetBool("IsStrafingRight", false);
+        
+        switch(currentState)
+        {
+            case EnemyState.Idle:
+                animator.SetBool("IsIdle", true);
+                break;
+            case EnemyState.Roam:
+                animator.SetBool("IsWalking", true);
+                break;
+            case EnemyState.Chase:
+                animator.SetBool("IsRunning", true);
+                break;
+            case EnemyState.Attack:
+                animator.SetBool("IsAttacking", true);
+                break;
+            case EnemyState.StrafeLeft:
+                animator.SetBool("IsStrafingLeft", true);
+                break;
+            case EnemyState.StrafeRight:
+                animator.SetBool("IsStrafingRight", true);
+                break;
+        }
     }
 
     #endregion
