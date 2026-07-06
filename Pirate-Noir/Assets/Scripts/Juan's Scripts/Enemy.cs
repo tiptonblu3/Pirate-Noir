@@ -74,6 +74,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject pickupItem1;
     public GameObject pickupItem2;
+
+    public Animator animator;
     #endregion
 
 
@@ -83,6 +85,8 @@ public class Enemy : MonoBehaviour
     {
         maxHealth = health;
         Sword.SetActive(false); // sword is disabled at the start, will be enabled when attacking, this will probably change in later versions
+
+        //animator = GetComponentInChildren<Animator>();
         
         AttackPhaseSqrRange = AttackPhaseRange * AttackPhaseRange;
         FarSqrRange = FarRange * FarRange;
@@ -511,37 +515,6 @@ public class Enemy : MonoBehaviour
 
 
         }
-
-        /*
-        else if(AttackPhase)
-        {
-            if(choice < 25)
-            {
-                currentState = EnemyState.StrafeRight;
-            }
-            else if (choice < 50)
-            {
-                currentState = EnemyState.StrafeLeft;
-            }
-            else
-            {
-                currentState = EnemyState.Attack;
-            }
-             don't have the other things implemented yet.
-            else if (choice < 75)
-            {
-                currentState = EnemyState.Approach;
-            }
-            else
-            {
-                currentState = EnemyState.StepBack;
-            }
-            
-        }
-        */
-
-        
-
         
         ChoosingBehavior = false;
         
