@@ -166,6 +166,8 @@ MonoBehaviour:
   strafeSpeed: 4
   enemyWaves: {fileID: 2797073738729191402, guid: e42606a68549ab5429f3ca3116e9a364, type: 3}
   currentState: 0
+  pickupItem1: {fileID: 5544557556238578870, guid: 561b8c52180e5da4091dbfd83dac4545, type: 3}
+  pickupItem2: {fileID: 7989009935537831328, guid: 56933424f2bd70f4a8680bce2145e944, type: 3}
 --- !u!195 &2504967775791247703
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -71,6 +71,9 @@ public class Enemy : MonoBehaviour
 
     public EnemyWaves enemyWaves;
     public EnemyState currentState; // to determine the current state of the enemy, will be used in later versions to make the enemy do different things based on the state.
+
+    public GameObject pickupItem1;
+    public GameObject pickupItem2;
     #endregion
 
 
@@ -271,6 +274,21 @@ public class Enemy : MonoBehaviour
 
     public virtual void EnemyDied()
     {
+        int itemDropChance;
+
+        itemDropChance = Random.Range(0,100);
+
+        if (itemDropChance < 60)
+        {
+            Instantiate(pickupItem1);
+            pickupItem1.transform.position = this.transform.position;
+        }
+        else
+        {
+            Instantiate(pickupItem2);
+            pickupItem2.transform.position = this.transform.position;
+        }
+        
         enemyWaves.ActiveEnemies--;
         StopAllCoroutines();
         if(enemyWaves.ActiveEnemies < 0)
