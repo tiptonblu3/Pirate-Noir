@@ -11158,6 +11158,9 @@ MonoBehaviour:
   strafeSpeed: 4
   enemyWaves: {fileID: 0}
   currentState: 0
+  pickupItem1: {fileID: 0}
+  pickupItem2: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &5207259015221179641
 MonoBehaviour:
   m_ObjectHideFlags: 0
