@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class CameraTransition : MonoBehaviour
 {
@@ -7,26 +8,9 @@ public class CameraTransition : MonoBehaviour
     public GameObject CutsceneCamera; // Reference to the Cutscene Camera
     public float CutsceneDuration = 2.0f; // Duration of the transition in seconds
 
-    void OnTriggerEnter(Collider other)
+    void OnEnable()
     {
-        if (other.CompareTag("Player"))
-        {
-            StartCutscene();
-            // disable the trigger to prevent multiple activations
-            GetComponent<Collider>().enabled = false;
-        }
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartCutscene();
     }
 
     public void StartCutscene()
@@ -40,6 +24,7 @@ public class CameraTransition : MonoBehaviour
 
         // Disable the main camera and enable the cutscene camera
         MainCamera.SetActive(false);
+        DisablePlayerInput(); // Disable player input during the cutscene
         CutsceneCamera.SetActive(true);
 
         while (ElapsedTime < CutsceneDuration)
@@ -50,7 +35,29 @@ public class CameraTransition : MonoBehaviour
 
         // Enable the main camera and disable the cutscene camera after the transition
         MainCamera.SetActive(true);
+        EnablePlayerInput(); // Re-enable player input after the cutscene
         CutsceneCamera.SetActive(false);
 
     }
+
+    [SerializeField] private PlayerInput playerInput;
+
+    // Call this to freeze the player during cutscenes or menus
+    public void DisablePlayerInput()
+    {
+        if (playerInput != null)
+        {
+            playerInput.DeactivateInput(); // Disables all actions completely
+        }
+    }
+
+    // Call this to give control back to the player
+    public void EnablePlayerInput()
+    {
+        if (playerInput != null)
+        {
+            playerInput.ActivateInput(); // Re-enables the default action map
+        }
+    }
+
 }

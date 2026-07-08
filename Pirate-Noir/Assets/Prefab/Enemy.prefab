@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8204332214593112986}
   - component: {fileID: 2504967775791247703}
   - component: {fileID: 4432748298879439910}
+  - component: {fileID: -2758365150742017875}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -166,6 +167,9 @@ MonoBehaviour:
   strafeSpeed: 4
   enemyWaves: {fileID: 2797073738729191402, guid: e42606a68549ab5429f3ca3116e9a364, type: 3}
   currentState: 0
+  pickupItem1: {fileID: 5544557556238578870, guid: 561b8c52180e5da4091dbfd83dac4545, type: 3}
+  pickupItem2: {fileID: 7989009935537831328, guid: 56933424f2bd70f4a8680bce2145e944, type: 3}
+  animator: {fileID: -2758365150742017875}
 --- !u!195 &2504967775791247703
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -203,6 +207,28 @@ MonoBehaviour:
   Enemy: {fileID: 8204332214593112986}
   Stats: {fileID: 5296888083960991240, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
   Player: {fileID: 2393370093522370787, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+--- !u!95 &-2758365150742017875
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502404573283594672}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 2faa610713d3b3c439473daa55e8c60a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2d9c913abd9addd4a9c5e62a52acb7b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1600089813000585350
 GameObject:
   m_ObjectHideFlags: 0

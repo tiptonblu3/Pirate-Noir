@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 7172418264066666625}
   - component: {fileID: 9211022646769361654}
   - component: {fileID: 371021324030659223}
+  - component: {fileID: -8685857786656656052}
   m_Layer: 9
   m_Name: Big Enemy
   m_TagString: Untagged
@@ -324,6 +325,9 @@ MonoBehaviour:
   strafeSpeed: 2
   enemyWaves: {fileID: 2797073738729191402, guid: e42606a68549ab5429f3ca3116e9a364, type: 3}
   currentState: 0
+  pickupItem1: {fileID: 5544557556238578870, guid: 561b8c52180e5da4091dbfd83dac4545, type: 3}
+  pickupItem2: {fileID: 7989009935537831328, guid: 56933424f2bd70f4a8680bce2145e944, type: 3}
+  animator: {fileID: 0}
   poolSize: 8
   AOECube: {fileID: 6171914065004291108}
   AOElist: []
@@ -364,6 +368,28 @@ MonoBehaviour:
   Enemy: {fileID: 7172418264066666625}
   Stats: {fileID: 5296888083960991240, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
   Player: {fileID: 2393370093522370787, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+--- !u!95 &-8685857786656656052
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291167230137631233}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 2faa610713d3b3c439473daa55e8c60a, type: 3}
+  m_Controller: {fileID: 9100000, guid: f89160c34c1c9ec43b690c61d4867db8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4714082384253823839
 GameObject:
   m_ObjectHideFlags: 0

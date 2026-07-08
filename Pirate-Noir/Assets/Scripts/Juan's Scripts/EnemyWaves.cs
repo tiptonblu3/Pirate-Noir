@@ -31,6 +31,7 @@ public class EnemyWaves : MonoBehaviour
 
     public int currentRound = 0;
     
+    public bool wavesCompleted = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -95,6 +96,7 @@ public class EnemyWaves : MonoBehaviour
 
         if(currentRound >= roundNumber) // stops waves from continuing if they are equal to the selected number of rounds listed.
         {
+            wavesCompleted = true;
             return;
         }
 

@@ -42,6 +42,16 @@ public class PlayerMovement : MonoBehaviour
     public float GroundCheckOffset = 0.1f; // Height offset for ground check
     #endregion
 
+    #region === Stair & Slope Snapping ===
+    [Header("Stair & Slope Snapping")]
+    public float MaxStepHeight = 0.4f; // Maximum distance the script will snap down to hit a step
+    private bool WasGroundedLastFrame;
+    private float AirborneTimer = 0f;
+    public float CoyoteTimeDuration = 0.15f; // Grace period before treating player as truly airborne
+    [Header("Step Up Settings")]
+    public float StepCheckDistance = 0.4f; // How far ahead to look for a step
+    #endregion
+
     #region === Interaction Settings ===
     // Groups interaction-related variables in the Inspector
     [Header("Interaction Settings")]
@@ -151,6 +161,45 @@ public class PlayerMovement : MonoBehaviour
         RB.linearVelocity = new Vector3(HorizontalVelocity.x, VerticalY, HorizontalVelocity.z); // Set Rigidbody velocity, preserving vertical velocity for jumping and gravity
     }
 
+    
+    private void HandleStepUp()
+    {
+        // Only try to step up if the player is actively providing movement input
+        if (MoveDirection.magnitude < 0.1f) return;
+
+        // Normalize our movement direction on the flat XZ plane
+        Vector3 moveDirXZ = new Vector3(MoveDirection.x, 0, MoveDirection.z).normalized;
+
+        // 1. Lower Ray: Check if we are walking into a wall/step at shin/ankle height
+        Vector3 lowerOrigin = transform.position + Vector3.up * 0.05f; 
+        if (Physics.Raycast(lowerOrigin, moveDirXZ, out RaycastHit lowerHit, StepCheckDistance, GroundLayer))
+        {
+            // 2. Upper Ray: Check if there is clear space above our MaxStepHeight
+            Vector3 upperOrigin = transform.position + Vector3.up * (MaxStepHeight + 0.05f);
+            if (!Physics.Raycast(upperOrigin, moveDirXZ, StepCheckDistance, GroundLayer))
+            {
+                // 3. Forward-Down Ray: Find the exact height of the top of the step
+                // We project slightly ahead of the lower hit point
+                Vector3 downRayOrigin = lowerHit.point + moveDirXZ * 0.1f + Vector3.up * MaxStepHeight;
+                
+                if (Physics.Raycast(downRayOrigin, Vector3.down, out RaycastHit downHit, MaxStepHeight + 0.1f, GroundLayer))
+                {
+                    // Ensure the surface we are stepping onto is relatively flat
+                    if (Vector3.Angle(downHit.normal, Vector3.up) < 45f)
+                    {
+                        // Smoothly lift the Rigidbody position over the step step
+                        // We add a tiny bit of forward nudge so they clear the lip of the step
+                        transform.position = new Vector3(transform.position.x, downHit.point.y, transform.position.z) + (moveDirXZ * 0.05f);
+                        
+                        // Zero out vertical velocity so gravity doesn't violently fight the step up
+                        VerticalY = 0f; 
+                        IsGrounded = true;
+                    }
+                }
+            }
+        }
+    }
+
     private void HandleStamina()
     {
         if (!CanMove) return; // Don't process movement if player can't move
@@ -181,11 +230,47 @@ public class PlayerMovement : MonoBehaviour
     
     private void CheckGround()
     {
+        /*
         // Create sphere position slightly above feet
         Vector3 SpherePosition = transform.position + Vector3.up * GroundCheckOffset; // Offset sphere upward slightly
 
         // Perform sphere collision check
         IsGrounded = Physics.CheckSphere(SpherePosition, GroundCheckRadius, GroundLayer); // Detect ground collision
+        */
+
+        // Keep track of what we were before updating
+        WasGroundedLastFrame = IsGrounded;
+
+        Vector3 SpherePosition = transform.position + Vector3.up * GroundCheckOffset;
+        IsGrounded = Physics.CheckSphere(SpherePosition, GroundCheckRadius, GroundLayer);
+
+        // --- Ground Snapping Logic ---
+        // If we just lost grounding, but we are moving down/horizontally (not jumping)
+        if (!IsGrounded && WasGroundedLastFrame && VerticalY <= 0)
+        {
+            // Cast a ray downwards from the player's feet position to find a step
+            if (Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, out RaycastHit hit, MaxStepHeight + 0.1f, GroundLayer))
+            {
+                // Ensure the surface normal isn't a steep wall
+                if (Vector3.Angle(hit.normal, Vector3.up) < 45f) 
+                {
+                    IsGrounded = true;
+                    // Snap position down to the step surface
+                    transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+                    VerticalY = -BaseGravity; // Match grounded gravity force
+                }
+            }
+        }
+
+        // --- Coyote Time / Grace Period Tracker ---
+        if (IsGrounded)
+        {
+            AirborneTimer = 0f;
+        }
+        else
+        {
+            AirborneTimer += Time.fixedDeltaTime;
+        }
     }
 
     #endregion
@@ -330,6 +415,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement(); // Call the movement method in FixedUpdate for consistent physics updates
         CheckGround(); // Check if the player is grounded
+        HandleStepUp(); // Handle stepping up onto stairs or ledges
         ApplyGravity(); // Apply custom gravity to the player
         UpdateAnimations(); // Update animator parameters based on current state
         HandleStamina(); // Manage stamina drain and regeneration
@@ -344,6 +430,24 @@ public class PlayerMovement : MonoBehaviour
             transform.position + Vector3.up * GroundCheckOffset, // Sphere position
             GroundCheckRadius // Sphere radius
         );
+
+        // --- 2. Step Up Detection Rays ---
+        // Only draw the step rays if the player is actively moving, otherwise default to forward
+        Vector3 debugDir = MoveDirection.magnitude > 0.1f 
+            ? new Vector3(MoveDirection.x, 0, MoveDirection.z).normalized 
+            : transform.forward;
+
+        // Lower Ray (Ankle/Shin Height)
+        Vector3 lowerOrigin = transform.position + Vector3.up * 0.05f;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawRay(lowerOrigin, debugDir * StepCheckDistance);
+        Gizmos.DrawSphere(lowerOrigin, 0.03f); // Tiny sphere at the origin
+
+        // Upper Ray (Clearance Height)
+        Vector3 upperOrigin = transform.position + Vector3.up * (MaxStepHeight + 0.05f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(upperOrigin, debugDir * StepCheckDistance);
+        Gizmos.DrawSphere(upperOrigin, 0.03f); // Tiny sphere at the origin
     }
 
 }

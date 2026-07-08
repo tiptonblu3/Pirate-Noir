@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UIScenes/Options.unity
     guid: a57bbef8d1b50954d98480bf8046ddf4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Lays Workshop.unity
     guid: 7017b1a56252fad498301f9bac7bd4af
   - enabled: 1
@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jordon Test Zone.unity
     guid: eb55ac9f0c9ee4f418b8a4b694ce447c
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 1c368d15c3db93147b1659f6613dbeef
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
