@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 6092521271010396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5527137e-15, y: 0, z: 0.0000004172325}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -637,10 +637,11 @@ MonoBehaviour:
   BaseSprintSpeed: 9
   SpeedMultiplier: 1
   Lives: 3
-  CurrentHealth: -70
-  MaxHealth: 100
-  CurrentStamina: 100
-  MaxStamina: 100
+  CurrentHealth: 200
+  MaxHealth: 200
+  Rum: 0
+  CurrentStamina: 200
+  MaxStamina: 200
   BaseAttackPower: 25
   AttackMultiplier: 1
   AttackRange: 3
@@ -680,6 +681,9 @@ MonoBehaviour:
     m_Bits: 1224
   GroundCheckRadius: 0.3
   GroundCheckOffset: 0.25
+  MaxStepHeight: 0.4
+  CoyoteTimeDuration: 0.15
+  StepCheckDistance: 0.6
   InteractRange: 3
   InteractableLayer:
     serializedVersion: 2
@@ -956,6 +960,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: cbb3709f-98d8-4300-b490-d4d6267fef6b
     m_ActionName: 'SliderEdit/Submit[/XInputControllerWindows/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6685528757163221336}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnHeal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+    m_ActionId: e5b18d9a-4844-41bc-a291-7460fa0cd6c9
+    m_ActionName: 'Player/Heal[/Keyboard/r]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
