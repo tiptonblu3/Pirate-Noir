@@ -15,6 +15,9 @@ public class PlayerStats : MonoBehaviour
     public float CurrentHealth = 100; // Current health of the player
     public float MaxHealth = 100; // Maximum health of the player
 
+    [Header("Rum")]
+    public int Rum = 0; // Number of rum bottles the player has
+
     [Header("Stamina")]
     public float CurrentStamina = 100; // Current stamina of the player
     public float MaxStamina = 100; // Maximum stamina of the player
