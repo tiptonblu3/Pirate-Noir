@@ -167,7 +167,6 @@ public class RangedEnemy : Enemy
                 yield return null;
             }
 
-            AttackPlayer();
             agent.velocity = Vector3.zero; // stop the enemy after the dash is done
             yield return new WaitForSeconds(0.2f); 
 
@@ -211,7 +210,7 @@ public class RangedEnemy : Enemy
                 yield return null;
             }
             
-            AttackPlayer();
+            
             agent.velocity = Vector3.zero; // stop the enemy after the dash is done
             yield return new WaitForSeconds(0.2f); // wait for the next frame before continuing the loop
 
