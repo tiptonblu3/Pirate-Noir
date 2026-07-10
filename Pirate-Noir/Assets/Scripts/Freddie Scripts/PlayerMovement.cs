@@ -329,6 +329,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void OnHeal(InputAction.CallbackContext Context)
+    {
+        if (Context.started && Stats.Rum > 0 && Stats.CurrentHealth < Stats.MaxHealth) // Check if the player has rum and is not at full health
+        {
+            Stats.CurrentHealth += 20f; // Heal the player by 20 health points
+            if (Stats.CurrentHealth > Stats.MaxHealth) // Ensure health does not exceed max
+            {
+                Stats.CurrentHealth = Stats.MaxHealth;
+            }
+            Stats.Rum--; // Decrease the rum count by 1
+            Debug.Log("Player healed! Current Health: " + Stats.CurrentHealth + ", Remaining Rum: " + Stats.Rum);
+        }
+        else
+        {
+            Debug.Log("Cannot heal: Either no rum or already at full health.");
+        }
+    }
+
     public void OnAttack(InputAction.CallbackContext Context)
     {
         if (Context.performed && CanMove && CanAttack) // Only check for Enemies when the attack button is initially pressed
