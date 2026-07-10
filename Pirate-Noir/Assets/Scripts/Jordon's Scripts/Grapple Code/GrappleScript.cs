@@ -48,11 +48,12 @@ public class GrappleScript : MonoBehaviour
 
     private void StartSwing()
     {
-        playerStats.IsSwinging = true; // Swinging state is true when starting to swing
+        
         if (joint != null) return;
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxSwingDistance, whatIsGrappleable))
         {
+           playerStats.IsSwinging = true; // Swinging state is true when starting to swing
            swingPoint = hit.point;
 
            if (playerMovement.IsGrounded != true)
