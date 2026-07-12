@@ -5,10 +5,14 @@ public class PlayerStats : MonoBehaviour
     [Header("Movement Speeds")]
     public float BaseMoveSpeed = 6f;
     public float BaseSprintSpeed = 9f;
+    public float BaseSwingingSpeed = 12f; // Base swinging speed when using the grapple
 
     public float SpeedMultiplier = 1.0f; // Multiplier for movement speed (e.g., from buffs/debuffs)
     public float MoveSpeed => BaseMoveSpeed * SpeedMultiplier; // Current move speed considering modifiers
     public float SprintSpeed => BaseSprintSpeed * SpeedMultiplier; // Current sprint speed considering modifiers
+    public float SwingingSpeed => BaseSwingingSpeed * SpeedMultiplier; // Current swinging speed considering modifiers
+
+    public bool IsSwinging;
 
     [Header("Health")]
     public int Lives = 3; // Number of lives the player has

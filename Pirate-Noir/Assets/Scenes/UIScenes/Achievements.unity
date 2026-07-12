@@ -562,6 +562,7 @@ GameObject:
   - component: {fileID: 1528495666}
   - component: {fileID: 1528495665}
   - component: {fileID: 1528495664}
+  - component: {fileID: 1528495668}
   - component: {fileID: 1528495663}
   m_Layer: 5
   m_Name: Canvas
@@ -590,6 +591,10 @@ MonoBehaviour:
   MusicAS: {fileID: 0}
   ToggleSFXOn: 0
   SFXAS: {fileID: 0}
+  LadderUI: {fileID: 0}
+  targetTime: 1
+  targetYPosition: -1000
+  ButtonsUI: {fileID: 0}
 --- !u!114 &1528495664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,6 +681,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1528495668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528495661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51380372545a253408e95705b3b209aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamepadMainMenu
+  firstSelectedButton: {fileID: 1609138848}
+  isUsingGamepad: 0
 --- !u!1 &1609138848
 GameObject:
   m_ObjectHideFlags: 0

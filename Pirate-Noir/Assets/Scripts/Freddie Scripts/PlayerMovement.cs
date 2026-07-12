@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump Settings")] // Inspector header for jumping settings
     public float JumpForce = 3f; // Strength of jump force
     public float BaseGravity = 1f; // Base gravity value to keep player grounded when not jumping
+    public float SwingGravity = 5f; // Gravity value when swinging to keep player grounded
     public float Gravity = -25f; // Custom gravity applied manually
     #endregion
 
@@ -154,7 +155,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!CanMove) return; // Don't process movement if player can't move
         CanSprint = IsSprinting && MoveInput.magnitude > 0 && Stats.CurrentStamina > StaminaDrainRate; // Player can sprint if sprinting, has movement input, and enough stamina to drain
-        CurrentSpeed = CanSprint ? Stats.SprintSpeed : Stats.MoveSpeed; // Use modified speeds from stats
+        
+        if (Stats.IsSwinging)
+        {
+            CurrentSpeed = Stats.SwingingSpeed; // Use swinging speed when swinging
+        }
+        else
+        {
+            CurrentSpeed = CanSprint ? Stats.SprintSpeed : Stats.MoveSpeed; // Use modified speeds from stats
+        }
         
         MoveDirection = transform.forward * MoveInput.y + transform.right * MoveInput.x; // Calculate movement direction based on input and player orientation
         Vector3 HorizontalVelocity = MoveDirection * CurrentSpeed; // Calculate horizontal velocity based on movement direction and current speed
@@ -282,6 +291,11 @@ public class PlayerMovement : MonoBehaviour
     
     private void ApplyGravity()
     {
+        if (Stats.IsSwinging)
+        {
+            VerticalY = -SwingGravity; // Keep slight downward force to remain grounded
+        }
+        else
         if (IsGrounded && VerticalY < 0) // Player grounded while falling
         {
             VerticalY = -BaseGravity; // Keep slight downward force to remain grounded

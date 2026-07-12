@@ -36,6 +36,7 @@ public class EnemyWaves : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player").transform; // finds the player object and sets it to the player variable
         SpawnDistanceSqr = SpawnDistance * SpawnDistance; // calculate the squared distance for optimization
 
         for (int i = 0; i < poolSize; i++)

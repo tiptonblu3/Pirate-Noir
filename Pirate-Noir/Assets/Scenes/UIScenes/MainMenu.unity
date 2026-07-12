@@ -803,7 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 1527499029}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &689916379
@@ -1309,6 +1309,7 @@ GameObject:
   - component: {fileID: 1175410980}
   - component: {fileID: 1175410979}
   - component: {fileID: 1175410984}
+  - component: {fileID: 1175410987}
   - component: {fileID: 1175410986}
   - component: {fileID: 1175410985}
   m_Layer: 5
@@ -1541,6 +1542,20 @@ MonoBehaviour:
   audioSource: {fileID: 1175410985}
   hoverSound: {fileID: 8300000, guid: d15f712c6277e174dbb3c8a5eb8f17a9, type: 3}
   selectSound: {fileID: 8300000, guid: 6a1396ba04fc7ab438a67753addb0f1f, type: 3}
+--- !u!114 &1175410987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175410978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51380372545a253408e95705b3b209aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamepadMainMenu
+  firstSelectedButton: {fileID: 1527499029}
+  isUsingGamepad: 0
 --- !u!1 &1244509601
 GameObject:
   m_ObjectHideFlags: 0
