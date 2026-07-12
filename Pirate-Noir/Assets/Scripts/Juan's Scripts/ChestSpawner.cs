@@ -37,7 +37,7 @@ public class ChestSpawner : MonoBehaviour
 
     public void SpawnChests(Vector3 position)
     {
-        numberOfChests = Random.Range (0,5);
+        numberOfChests = Random.Range (1,5);
         NavMeshHit hit;
 
         for(int i = 0; i < numberOfChests; i++)

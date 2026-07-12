@@ -127,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2369345549505047993, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+      propertyPath: bigEnemy
+      value: 
+      objectReference: {fileID: 2010021461}
+    - target: {fileID: 2369345549505047993, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+      propertyPath: rangedEnemy
+      value: 
+      objectReference: {fileID: 1976453301}
+    - target: {fileID: 2369345549505047993, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+      propertyPath: regularEnemy
+      value: 
+      objectReference: {fileID: 1104807354}
     - target: {fileID: 2472726987057718606, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
       propertyPath: SinkTarget
       value: 
@@ -920,6 +932,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2369345549505047993, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+      propertyPath: bigEnemy
+      value: 
+      objectReference: {fileID: 2010021461}
+    - target: {fileID: 2369345549505047993, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+      propertyPath: rangedEnemy
+      value: 
+      objectReference: {fileID: 1976453301}
+    - target: {fileID: 2369345549505047993, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+      propertyPath: regularEnemy
+      value: 
+      objectReference: {fileID: 1104807354}
     - target: {fileID: 2472726987057718606, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
       propertyPath: SinkTarget
       value: 
@@ -1136,6 +1160,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b387e1281a99824c97b1f5d525a91a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+--- !u!1 &1104807354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1663594228138153806, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+  m_PrefabInstance: {fileID: 736321113416157208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1176741162
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,6 +3172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d85085fe11b9f4196cafdde24c2819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseManagement
+--- !u!1 &1976453301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 230868997009251154, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+  m_PrefabInstance: {fileID: 736321113416157208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1976915865
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,6 +3208,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2010021461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7517151065074544663, guid: bbf8d8cba67f22b41a70240e82be8f32, type: 3}
+  m_PrefabInstance: {fileID: 736321113416157208}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2027511609
 GameObject:
   m_ObjectHideFlags: 0
