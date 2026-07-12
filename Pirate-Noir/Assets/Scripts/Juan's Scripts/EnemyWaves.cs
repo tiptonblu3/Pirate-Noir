@@ -32,6 +32,7 @@ public class EnemyWaves : MonoBehaviour
     public int currentRound = 0;
     
     public bool wavesCompleted = false;
+    public bool isSpawningWave = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -89,23 +90,31 @@ public class EnemyWaves : MonoBehaviour
 
     public void WavesProcess() //spawns the waves of enemies
     {
+        if (isSpawningWave)
+        {
+            return;
+        }
+        
         if (ActiveEnemies > 0) // if not all enemies have been defeated, the next wave does not start
         {
             return;
         }
 
-        if(currentRound >= roundNumber) // stops waves from continuing if they are equal to the selected number of rounds listed.
+        if(currentRound >= roundNumber && ActiveEnemies == 0 && !isSpawningWave) // stops waves from continuing if they are equal to the selected number of rounds listed.
         {
+            // added extra conditions.
             wavesCompleted = true;
             return;
         }
 
-        StartCoroutine(SpawnWave());
+        
         currentRound++;
+        StartCoroutine(SpawnWave());
     } 
 
     public IEnumerator SpawnWave()
     {
+        isSpawningWave = true;
         for (int i = 0; i < enemiesPerWave; i++)
         {
             spawnLocationNumber = Random.Range(0,2);
@@ -126,5 +135,7 @@ public class EnemyWaves : MonoBehaviour
 
             yield return new WaitForSeconds(spawnWait); // gives a little delay between enemies spawning.
         }
+
+        isSpawningWave = false;
     }
 }
