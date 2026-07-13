@@ -45,6 +45,7 @@ public class PauseManagement : MonoBehaviour
 
     public GameObject PauseUI;
     public GameObject SettingsUI;
+    public GameObject Crosshair;
     public GameObject firstSelectedPauseButton;
     public GameObject firstSelectedSettingsButton;
     
@@ -173,6 +174,8 @@ public class PauseManagement : MonoBehaviour
         
         StartCoroutine(stambar.FadeOutSprint());
         StartCoroutine(healthbar.FadeOutHealth());
+        Crosshair.SetActive(false);
+
 
         Cursor.lockState = CursorLockMode.None; //unlock cursor so the player can click on the buttons
         Cursor.visible = true;
@@ -207,6 +210,7 @@ public class PauseManagement : MonoBehaviour
         Cursor.visible = false;
 
         PauseUI.SetActive(false);
+        Crosshair.SetActive(true);
         
         Time.timeScale = 1f;
 

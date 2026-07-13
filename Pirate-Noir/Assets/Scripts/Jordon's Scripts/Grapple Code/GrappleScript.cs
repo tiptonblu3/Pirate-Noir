@@ -17,15 +17,18 @@ public class GrappleScript : MonoBehaviour
     private Vector3 swingPoint;
     private SpringJoint joint;
     private Vector3 currentGrapplePosition;
-    public float SwingTime = 5f; // How quickly the rope moves to the grapple point
+
 
     [Space(5)]
     [Header("Swinging Values")]
     public float spring = 4.5f;
     public float damper = 7f;
     public float massScale = 4.5f;
+    public float SwingTime = 5f; // How quickly the rope moves to the grapple point
+    public float reelSpeed = 5f; // how fast it brings the player to the grapple point
     public float forwardPullForce = 15f; 
     public float swingAcceleration = 20f;
+    public float launchOnReleaseForce = 12f;
     public Rigidbody rb;
 
     public void OnGrapple(InputAction.CallbackContext Context)
@@ -51,6 +54,13 @@ public class GrappleScript : MonoBehaviour
         // If the joint exists, the player is currently actively swinging
         if (joint != null && rb != null)
         {
+            if (joint.maxDistance > 1.5f) 
+            {
+                joint.maxDistance -= reelSpeed * Time.fixedDeltaTime;
+                
+                // Keep minDistance proportionally smaller or clamped
+                joint.minDistance = Mathf.Max(0.2f, joint.minDistance - (reelSpeed * Time.fixedDeltaTime));
+            }
             // 1. Direction from player pointing straight to the anchor hook
             Vector3 dirToTarget = (swingPoint - player.position).normalized;
             
@@ -138,6 +148,19 @@ public class GrappleScript : MonoBehaviour
         if (playerMovement.IsGrounded == true)
         {
                 playerMovement.CurrentSpeed = playerMovement.CanSprint ? playerStats.SprintSpeed : playerStats.MoveSpeed;;
+        }
+        if (joint != null && rb != null)
+        {
+            // Get the direction the player is looking
+            Vector3 launchDirection = cam.forward;
+
+            // Optional: Give it a tiny bit of upward lift so they get good airtime, 
+            // even if they are looking slightly downward.
+            launchDirection.y = Mathf.Max(launchDirection.y + 0.1f, 0.2f);
+            launchDirection = launchDirection.normalized;
+
+            // Apply the impulse in the look direction to preserve and stack onto existing momentum
+            rb.AddForce(launchDirection * launchOnReleaseForce, ForceMode.Impulse);
         }
 
         maxSwingDistance = 25f;
