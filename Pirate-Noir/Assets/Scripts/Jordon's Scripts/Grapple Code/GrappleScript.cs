@@ -25,7 +25,8 @@ public class GrappleScript : MonoBehaviour
     public float damper = 7f;
     public float massScale = 4.5f;
     public float forwardPullForce = 15f; 
-
+    public float swingAcceleration = 20f;
+    public Rigidbody rb;
 
     public void OnGrapple(InputAction.CallbackContext Context)
     {
@@ -39,6 +40,33 @@ public class GrappleScript : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        // Cache the Rigidbody reference on awake
+        rb = player.GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
+    {
+        // If the joint exists, the player is currently actively swinging
+        if (joint != null && rb != null)
+        {
+            // 1. Direction from player pointing straight to the anchor hook
+            Vector3 dirToTarget = (swingPoint - player.position).normalized;
+            
+            // 2. Direction the player is looking
+            Vector3 forwardForce = cam.forward;
+            
+            // 3. Mix the forces: 60% looking direction, 40% pulling up/in toward the hook point
+            Vector3 pullDirection = (forwardForce * 0.6f) + (dirToTarget * 0.4f);
+            
+            // 4. Force a baseline upward lift so they don't lose altitude easily while swinging
+            pullDirection.y = Mathf.Max(pullDirection.y + 0.2f, 0.3f);
+            
+            // 5. Apply continuous physics force (ForceMode.Force builds natural velocity)
+            rb.AddForce(pullDirection.normalized * swingAcceleration, ForceMode.Force);
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -79,17 +107,26 @@ public class GrappleScript : MonoBehaviour
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
 
-            Rigidbody rb = player.GetComponent<Rigidbody>();
             if (rb != null)
             {
                 // Calculate a direction that is forward based on the camera, but slightly tilted up
-                Vector3 pushDirection = cam.forward;
-                pushDirection.y = Mathf.Clamp(pushDirection.y + 0.2f, 0.1f, 0.5f); // Forces a slight upward lift
+                Vector3 dirToTarget = (swingPoint - player.position).normalized;
+                
+                Vector3 pushDirection = (cam.forward * 0.6f) + (dirToTarget * 0.4f); // Forces a slight upward lift
+
+                pushDirection.y = Mathf.Max(pushDirection.y, 0.5f, 0.5f); // Ensure there's always some upward force
+                pushDirection = pushDirection.normalized; // Normalize the direction to ensure consistent force application
+
+                if (rb.linearVelocity.y < 0)
+                {
+                    rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+                }
+
 
                 // Apply an instant velocity change to launch the player forward
-                rb.AddForce(pushDirection.normalized * forwardPullForce, ForceMode.VelocityChange);
+                rb.AddForce(pushDirection * forwardPullForce, ForceMode.Impulse);
             }
-            maxSwingDistance = 10f;
+            maxSwingDistance = 2f;
 
         }
         
