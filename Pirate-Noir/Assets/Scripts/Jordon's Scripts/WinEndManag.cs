@@ -61,6 +61,7 @@ public class WinEndManag : MonoBehaviour
         
         Movement.CanMove = false;
         EndGameState = true;
+        PauseManagement.Crosshair.SetActive(false);
         PauseManagement.HealthcanvasGroup.alpha = 0;
         stambar.vis.alpha = 0;
         
@@ -87,6 +88,7 @@ public class WinEndManag : MonoBehaviour
         PauseManagement.SetSFXVolume(0f);
 
         EndGameState = true;
+        PauseManagement.Crosshair.SetActive(false);
         PauseManagement.HealthcanvasGroup.alpha = 0;
         stambar.vis.alpha = 0;
 
