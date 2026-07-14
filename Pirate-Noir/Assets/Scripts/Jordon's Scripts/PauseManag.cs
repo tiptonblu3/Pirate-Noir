@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
 using UnityEngine.Audio;
 using UnityEngine.EventSystems;
+using TMPro;
 
 
 public class PauseManagement : MonoBehaviour
@@ -48,7 +49,9 @@ public class PauseManagement : MonoBehaviour
     public GameObject Crosshair;
     public GameObject firstSelectedPauseButton;
     public GameObject firstSelectedSettingsButton;
-    
+    public TextMeshProUGUI RumUI;
+    public PlayerStats playerStats; 
+
     [Space(10)]
     [Header("Audio Settings")]
 
@@ -67,6 +70,11 @@ public class PauseManagement : MonoBehaviour
     public AudioMixer audioMixer;
 
     #endregion
+
+    public void Update()
+    {
+        RumUI.text = $"Rum: {playerStats.Rum}";
+    }
     private void OnValidate()
     {
         if (audioMixer == null)
@@ -102,6 +110,8 @@ public class PauseManagement : MonoBehaviour
         GameObject winend = GameObject.Find("UI"); // Get the canvas group from the gameobject PauseMenu 
             if (winend != null) WinEndManag = winend.GetComponent<WinEndManag>();
 
+        playerStats = Object.FindAnyObjectByType<PlayerStats>(); // reference to the player's stats script to modify health
+        // public PlayerStats playerStats;
 
         GameObject canvgroup = GameObject.Find("PauseMenu"); // Get the canvas group from the gameobject PauseMenu 
             if (canvgroup != null) canvasGroup = canvgroup.GetComponent<CanvasGroup>();

@@ -2949,6 +2949,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5406509206254355982, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5406509206254355982, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
       propertyPath: firstSelectedPauseButton
       value: 
       objectReference: {fileID: 1938748231}

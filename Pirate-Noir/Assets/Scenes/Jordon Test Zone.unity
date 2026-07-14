@@ -12411,6 +12411,10 @@ PrefabInstance:
       propertyPath: Movement
       value: 
       objectReference: {fileID: 2049630539}
+    - target: {fileID: 5406509206254355982, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 2049630543}
     - target: {fileID: 8125742265247291396, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
