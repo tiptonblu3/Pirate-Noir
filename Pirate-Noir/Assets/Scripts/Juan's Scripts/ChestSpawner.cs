@@ -17,6 +17,8 @@ public class ChestSpawner : MonoBehaviour
 
     public int areaMask = NavMesh.AllAreas;
 
+    public Vector3 spawnAreaSize = new Vector3(20f, 0f, 20f); //defines an area of a specific size around the ship
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -42,7 +44,9 @@ public class ChestSpawner : MonoBehaviour
 
         for(int i = 0; i < numberOfChests; i++)
         {
-           if (NavMesh.SamplePosition(position, out hit, 10f, areaMask))
+           Vector3 randomPoint = transform.position + new Vector3(Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f), 0, Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f));
+           // instead of making the chest be spawned by the transform position, make the x and z positions be randomized so it can spawn around different parts of the ship.
+           if (NavMesh.SamplePosition(randomPoint, out hit, 10f, areaMask))
             {
                 Instantiate(chest, hit.position, Quaternion.identity);
             } 

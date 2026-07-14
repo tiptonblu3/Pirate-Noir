@@ -285,15 +285,14 @@ public class Enemy : MonoBehaviour
 
         itemDropChance = Random.Range(0,100);
 
-        if (itemDropChance < 60)
+        if (itemDropChance < 5)
         {
-            Instantiate(pickupItem1);
-            pickupItem1.transform.position = this.transform.position;
+            Instantiate(pickupItem1, transform.position, Quaternion.identity); 
+            // changed it to resolve the issue of items spawning in other ships and outside this ship in general
         }
-        else
+        else if (itemDropChance < 15)
         {
-            Instantiate(pickupItem2);
-            pickupItem2.transform.position = this.transform.position;
+            Instantiate(pickupItem2, transform.position, Quaternion.identity);
         }
         
         enemyWaves.ActiveEnemies--;
