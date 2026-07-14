@@ -37,7 +37,7 @@ public class RangedEnemy : Enemy
             if (Projectile != null)
             {
                 Debug.Log("Disabling projectile");
-                Destroy(Projectile);
+                Projectile.SetActive(false);
             }
         }
 
@@ -94,13 +94,17 @@ public class RangedEnemy : Enemy
             projectileCount = 3;
         }
 
-        GameObject projectile = GetPooledProjectile(); 
-
         for(int i = 0; i < projectileCount; i++)
         {
+            GameObject projectile = GetPooledProjectile(); // calls different projectiles, were before it only called one projectile and used it 1-3 times.
+
+            if(projectile == null) // stops the issues Freddy is having were the projectile is crashing the game. 
+            {
+                break;
+            }
+
             transform.rotation = quaternion;
             //The projectile
-            //GameObject projectile = GetPooledProjectile(); 
             if(projectile != null)
             {
                 projectile.transform.position = transform.position + AttackDirection; // spawn the projectile in front of the enemy, this will probably change in later versions
@@ -116,7 +120,11 @@ public class RangedEnemy : Enemy
 
         yield return new WaitForSeconds(AttackDuration);
 
-        projectile.SetActive(false);
+        if (Projectile != null)
+        {
+            Projectile.SetActive(false);
+        }
+
         IsDoingAction = false;
 
         if(AttackPhase)
