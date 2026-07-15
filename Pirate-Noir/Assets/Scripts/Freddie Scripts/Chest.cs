@@ -56,6 +56,10 @@ public class Chest : MonoBehaviour, IInteractable
                 Debug.Log("Chest unlocked! Player used a key.");
                 Stats.Gold += Points; // Add the points to the player's gold
                 gameObject.SetActive(false); // disable this game object after interaction
+                if (SpawnItemOnOpen)
+                {
+                    SpawnItem(); // Call the SpawnItem method to spawn an item
+                }
             }
             else
             {
@@ -67,12 +71,13 @@ public class Chest : MonoBehaviour, IInteractable
             Debug.Log("Chest interacted with!");
             Stats.Gold += Points; // Add the points to the player's gold
             gameObject.SetActive(false); // disable this game object after interaction
+            if (SpawnItemOnOpen)
+            {
+                SpawnItem(); // Call the SpawnItem method to spawn an item
+            }
         }
 
-        if (SpawnItemOnOpen)
-        {
-            SpawnItem(); // Call the SpawnItem method to spawn an item
-        }
+        
     }
 
     public void SpawnItem()
