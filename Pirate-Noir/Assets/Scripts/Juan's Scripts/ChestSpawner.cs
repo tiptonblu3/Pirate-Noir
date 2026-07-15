@@ -47,7 +47,7 @@ public class ChestSpawner : MonoBehaviour
 
         for(int i = 0; i < numberOfChests; i++)
         {
-           Vector3 randomPoint = transform.position + new Vector3(Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f), 0, Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f));
+           Vector3 randomPoint = transform.position + new Vector3(Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f), 0.5f, Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f));
            // instead of making the chest be spawned by the transform position, make the x and z positions be randomized so it can spawn around different parts of the ship.
            if (typeOfChest == 0)
            {
