@@ -74,6 +74,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject pickupItem1;
     public GameObject pickupItem2;
+    public GameObject pickupItem3;
+    public GameObject pickupItem4;
 
     public Animator animator;
     #endregion
@@ -285,14 +287,22 @@ public class Enemy : MonoBehaviour
 
         itemDropChance = Random.Range(0,100);
 
-        if (itemDropChance < 5)
+        if (itemDropChance < 15)
         {
             Instantiate(pickupItem1, transform.position, Quaternion.identity); 
             // changed it to resolve the issue of items spawning in other ships and outside this ship in general
         }
-        else if (itemDropChance < 15)
+        else if (itemDropChance < 40)
         {
             Instantiate(pickupItem2, transform.position, Quaternion.identity);
+        }
+        else if (itemDropChance < 80)
+        {
+            Instantiate(pickupItem3, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(pickupItem4, transform.position, Quaternion.identity);
         }
         
         enemyWaves.ActiveEnemies--;

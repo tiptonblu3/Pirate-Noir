@@ -6,7 +6,9 @@ using System.Collections.Generic;
 public class ChestSpawner : MonoBehaviour
 {
     public GameObject chest;
+    public GameObject lockedChest;
     public int numberOfChests;
+    public int typeOfChest;
     public bool spawn;
     
     public EnemyWaves enemyWaves;
@@ -40,16 +42,28 @@ public class ChestSpawner : MonoBehaviour
     public void SpawnChests(Vector3 position)
     {
         numberOfChests = Random.Range (1,5);
+        typeOfChest = Random.Range(0,1);
         NavMeshHit hit;
 
         for(int i = 0; i < numberOfChests; i++)
         {
            Vector3 randomPoint = transform.position + new Vector3(Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f), 0, Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f));
            // instead of making the chest be spawned by the transform position, make the x and z positions be randomized so it can spawn around different parts of the ship.
-           if (NavMesh.SamplePosition(randomPoint, out hit, 10f, areaMask))
-            {
-                Instantiate(chest, hit.position, Quaternion.identity);
-            } 
+           if (typeOfChest == 0)
+           {
+                if (NavMesh.SamplePosition(randomPoint, out hit, 10f, areaMask))
+                {
+                    Instantiate(chest, hit.position, Quaternion.identity);
+                }
+           }
+           else if (typeOfChest == 1)
+           {
+                if (NavMesh.SamplePosition(randomPoint, out hit, 10f, areaMask))
+                {
+                    Instantiate(lockedChest, hit.position, Quaternion.identity);
+                }
+           }
+            
         }
         
     }
