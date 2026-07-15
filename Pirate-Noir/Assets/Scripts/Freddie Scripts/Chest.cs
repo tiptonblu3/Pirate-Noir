@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Chest : MonoBehaviour, IInteractable
 {
@@ -16,6 +17,11 @@ public class Chest : MonoBehaviour, IInteractable
     public int GoldAmountMin = 100; // Minimum amount of gold in the chest
     public int GoldAmountMax = 500; // Maximum amount of gold in the chest
 
+    [Header("Item Spawn Settings")]
+    public bool SpawnItemOnOpen = false; // Indicates if an item should be spawned when the chest is opened
+    private int ItemSpawnChance = 50; // Chance (in percentage) to spawn an item when the chest is opened
+    public List<GameObject> ItemPrefabs;// Prefab list
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +36,12 @@ public class Chest : MonoBehaviour, IInteractable
         {
             Points = Random.Range(GoldAmountMin, GoldAmountMax + 1); // Assign a random point value between the unlocked gold amounts
         }
+
+        if (Random.Range(0, 100) < ItemSpawnChance)
+        {
+            SpawnItemOnOpen = true; // Set to true if the random chance is met
+        }
+
     }
 
     public void Interact()
@@ -56,5 +68,22 @@ public class Chest : MonoBehaviour, IInteractable
             Stats.Gold += Points; // Add the points to the player's gold
             gameObject.SetActive(false); // disable this game object after interaction
         }
+
+        if (SpawnItemOnOpen)
+        {
+            SpawnItem(); // Call the SpawnItem method to spawn an item
+        }
     }
+
+    public void SpawnItem()
+    {
+        // Spawn a random item from the ItemPrefabs list at the chest's position
+        if (ItemPrefabs.Count > 0)
+        {
+            int randomIndex = Random.Range(0, ItemPrefabs.Count);
+            GameObject itemPrefab = ItemPrefabs[randomIndex];
+            Instantiate(itemPrefab, transform.position, Quaternion.identity);
+        }
+    }
+
 }

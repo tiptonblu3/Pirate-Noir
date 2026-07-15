@@ -125,3 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b7c7484f6e2ed545916553b5a08576c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chest
+  Points: 0
+  Locked: 0
+  GoldAmountLockedMin: 500
+  GoldAmountLockedMax: 2000
+  GoldAmountMin: 100
+  GoldAmountMax: 500
+  SpawnItemOnOpen: 0
+  ItemPrefabs:
+  - {fileID: 6226777467395359819, guid: 2209ca43608cb8746a546bdd07afd583, type: 3}
