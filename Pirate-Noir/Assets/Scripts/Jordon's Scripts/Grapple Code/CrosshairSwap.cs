@@ -8,10 +8,12 @@ public class CrosshairSwap : MonoBehaviour
     public Sprite grappleCrosshair;
 
     public GrappleScript grappleScript;
+    public CameraTransition camtransit;
     
+
     public int grapplableLayerMask;
 
-    private void awake()
+    private void Awake()
     {
         // Ensure we have a reference to the GrappleScript
         if (grappleScript == null)
@@ -35,6 +37,25 @@ public class CrosshairSwap : MonoBehaviour
 
     private void Update()
     {
+        if (camtransit != null)
+        {
+            if (camtransit.CutsceneActive)
+            {
+                if (crosshairImage != null)
+                {
+                    crosshairImage.enabled = false;
+                }
+                
+                return;
+            }
+            else
+            {
+                if (crosshairImage != null)
+                {
+                    crosshairImage.enabled = true;
+                }
+            }
+        }
         CheckTargetUnderCrosshair();
     }
 
@@ -42,7 +63,7 @@ public class CrosshairSwap : MonoBehaviour
 
     private void CheckTargetUnderCrosshair()
     {
-        if (crosshairImage == null) return;
+        if (crosshairImage == null || Camera.main == null) return;
 
         // Create a ray shooting straight out of the center of the camera viewport
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));

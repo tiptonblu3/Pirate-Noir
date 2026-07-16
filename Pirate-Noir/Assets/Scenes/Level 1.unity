@@ -2048,6 +2048,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b387e1281a99824c97b1f5d525a91a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+--- !u!114 &1101882240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5055198253420233987, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+  m_PrefabInstance: {fileID: 1101882232}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101882235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a999e3316f0a204bbd1644adece5214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrappleScript
 --- !u!1 &1176741162
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,6 +2624,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1029017472}
   CutsceneCamera: {fileID: 1476943676}
   CutsceneDuration: 5
+  CutsceneActive: 0
   playerInput: {fileID: 1101882238}
 --- !u!114 &1476943679
 MonoBehaviour:
@@ -3297,6 +3309,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1029017472}
   CutsceneCamera: {fileID: 1809772271}
   CutsceneDuration: 5
+  CutsceneActive: 0
   playerInput: {fileID: 1101882238}
 --- !u!114 &1809772274
 MonoBehaviour:
@@ -4072,6 +4085,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8505001725880584697, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      propertyPath: grappleScript
+      value: 
+      objectReference: {fileID: 1101882240}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4441,6 +4458,7 @@ MonoBehaviour:
   MainCamera: {fileID: 1029017472}
   CutsceneCamera: {fileID: 2040663390}
   CutsceneDuration: 5
+  CutsceneActive: 0
   playerInput: {fileID: 1101882238}
 --- !u!114 &2040663393
 MonoBehaviour:

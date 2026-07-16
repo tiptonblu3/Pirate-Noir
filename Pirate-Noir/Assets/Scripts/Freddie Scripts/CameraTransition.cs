@@ -7,10 +7,12 @@ public class CameraTransition : MonoBehaviour
     public GameObject MainCamera; // Reference to the Main Camera
     public GameObject CutsceneCamera; // Reference to the Cutscene Camera
     public float CutsceneDuration = 2.0f; // Duration of the transition in seconds
+    public bool CutsceneActive = false; // indicator for crosshair change
 
     void OnEnable()
     {
         StartCutscene();
+        CutsceneActive = true;
     }
 
     public void StartCutscene()
@@ -37,6 +39,7 @@ public class CameraTransition : MonoBehaviour
         MainCamera.SetActive(true);
         EnablePlayerInput(); // Re-enable player input after the cutscene
         CutsceneCamera.SetActive(false);
+        CutsceneActive = false;
 
     }
 
