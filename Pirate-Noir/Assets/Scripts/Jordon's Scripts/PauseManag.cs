@@ -195,6 +195,9 @@ public class PauseManagement : MonoBehaviour
         StartCoroutine(stambar.FadeOutSprint());
         StartCoroutine(healthbar.FadeOutHealth());
         Crosshair.SetActive(false);
+        RumUI.enabled = false;
+        GoldUI.enabled = false;
+        KeyUI.enabled = false;
 
 
         Cursor.lockState = CursorLockMode.None; //unlock cursor so the player can click on the buttons
@@ -231,6 +234,9 @@ public class PauseManagement : MonoBehaviour
 
         PauseUI.SetActive(false);
         Crosshair.SetActive(true);
+        RumUI.enabled = true;
+        GoldUI.enabled = true;
+        KeyUI.enabled = true;
         
         Time.timeScale = 1f;
 

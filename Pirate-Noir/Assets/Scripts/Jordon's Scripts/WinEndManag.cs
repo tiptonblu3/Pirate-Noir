@@ -64,6 +64,9 @@ public class WinEndManag : MonoBehaviour
         PauseManagement.Crosshair.SetActive(false);
         PauseManagement.HealthcanvasGroup.alpha = 0;
         stambar.vis.alpha = 0;
+        PauseManagement.RumUI.enabled = false;
+        PauseManagement.GoldUI.enabled = false;
+        PauseManagement.KeyUI.enabled = false;
         
         stambar.FadeOutSprint();
         healthbar.FadeOutHealth();
@@ -91,6 +94,9 @@ public class WinEndManag : MonoBehaviour
         PauseManagement.Crosshair.SetActive(false);
         PauseManagement.HealthcanvasGroup.alpha = 0;
         stambar.vis.alpha = 0;
+        PauseManagement.RumUI.enabled = false;
+        PauseManagement.GoldUI.enabled = false;
+        PauseManagement.KeyUI.enabled = false;
 
         stambar.FadeOutSprint();
         healthbar.FadeOutHealth();
