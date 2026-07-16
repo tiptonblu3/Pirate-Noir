@@ -49,8 +49,14 @@ public class PauseManagement : MonoBehaviour
     public GameObject Crosshair;
     public GameObject firstSelectedPauseButton;
     public GameObject firstSelectedSettingsButton;
-    public TextMeshProUGUI RumUI;
+    
+    [Header("Text UI")]
     public PlayerStats playerStats; 
+    public TextMeshProUGUI RumUI;
+    public TextMeshProUGUI GoldUI;
+    public TextMeshProUGUI KeyUI;
+    
+
 
     [Space(10)]
     [Header("Audio Settings")]
@@ -74,9 +80,12 @@ public class PauseManagement : MonoBehaviour
     public void Update()
     {
         RumUI.text = $"Rum: {playerStats.Rum}";
+        GoldUI.text = $"Gold: {playerStats.Gold}";
+        KeyUI.text = $"Keys: {playerStats.Keys}";
     }
     private void OnValidate()
     {
+        #if UNITY_EDITOR
         if (audioMixer == null)
         {
             string[] guids = UnityEditor.AssetDatabase.FindAssets("MasterVolume t:AudioMixer");
@@ -95,6 +104,7 @@ public class PauseManagement : MonoBehaviour
                 Debug.Log($"Successfully auto-assigned Audio Mixer from: {path}", this);
             }
         }
+        #endif
     }
 
     void Start()

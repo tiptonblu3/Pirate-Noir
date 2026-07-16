@@ -6864,6 +6864,8 @@ MonoBehaviour:
   GoldAmountLockedMax: 2000
   GoldAmountMin: 100
   GoldAmountMax: 500
+  SpawnItemOnOpen: 0
+  ItemPrefabs: []
 --- !u!1 &1604573805
 GameObject:
   m_ObjectHideFlags: 0
@@ -11457,6 +11459,8 @@ MonoBehaviour:
   currentState: 0
   pickupItem1: {fileID: 0}
   pickupItem2: {fileID: 0}
+  pickupItem3: {fileID: 0}
+  pickupItem4: {fileID: 0}
   animator: {fileID: 2207831068110270092}
 --- !u!114 &5207259015221179641
 MonoBehaviour:
@@ -12468,7 +12472,6 @@ SceneRoots:
   - {fileID: 950669397}
   - {fileID: 1669984387}
   - {fileID: 1573035979}
-  - {fileID: 9130839040605713698}
   - {fileID: 2042017039}
   - {fileID: 342518294}
   - {fileID: 1869013325}
@@ -12480,3 +12483,4 @@ SceneRoots:
   - {fileID: 2007732618}
   - {fileID: 3379368971022273214}
   - {fileID: 2028110033}
+  - {fileID: 9130839040605713698}
