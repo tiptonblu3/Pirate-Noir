@@ -10939,6 +10939,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+--- !u!114 &2900115802716868361 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5055198253420233987, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+  m_PrefabInstance: {fileID: 2900115802716868360}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a999e3316f0a204bbd1644adece5214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrappleScript
 --- !u!4 &3041737893653205213
 Transform:
   m_ObjectHideFlags: 0
@@ -12339,6 +12350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1947857590694999573, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e54e548806d02f74ca76714c0eb6cb39, type: 3}
     - target: {fileID: 2048794627168258382, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12419,6 +12434,18 @@ PrefabInstance:
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 2049630543}
+    - target: {fileID: 6869725996472255214, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869725996472255214, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869725996472255214, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8125742265247291396, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12442,8 +12469,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6162986581705158973, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9130839040605713701}
   m_SourcePrefab: {fileID: 100100000, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+--- !u!1 &9130839040605713699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6162986581705158973, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+  m_PrefabInstance: {fileID: 9130839040605713698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9130839040605713700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1947857590694999573, guid: 2ea7bbf5e475da5459ca72795301055d, type: 3}
+  m_PrefabInstance: {fileID: 9130839040605713698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9130839040605713699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &9130839040605713701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9130839040605713699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af75ff218a0e22f43bd4accef0c2f4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrosshairSwap
+  crosshairImage: {fileID: 9130839040605713700}
+  defaultCrosshair: {fileID: 21300000, guid: e54e548806d02f74ca76714c0eb6cb39, type: 3}
+  grappleCrosshair: {fileID: 21300000, guid: 68a830acd2eee8448b6f2c542e2be655, type: 3}
+  grappleScript: {fileID: 2900115802716868361}
+  grapplableLayerMask: 0
 --- !u!4 &9138634753940698590
 Transform:
   m_ObjectHideFlags: 0
