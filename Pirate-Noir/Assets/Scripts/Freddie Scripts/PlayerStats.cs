@@ -30,8 +30,13 @@ public class PlayerStats : MonoBehaviour
     public float BaseAttackPower = 10f; // Base attack power of the player
     public float AttackMultiplier = 1.0f; // Multiplier for attack power (e.g., from buffs/debuffs)
     public float AttackRange = 3f; // Range of the player's attacks
-    public float AttackCooldown = 1f; // Time between attacks in seconds
+    public float AttackCooldown = .25f; // Time between attacks in seconds
     public float AttackPower => BaseAttackPower * AttackMultiplier; // Current attack power considering modifiers
+
+    public int MaxCombo = 3; // Maximum number of attacks in a combo
+    public int CurrentComboCount = 0; // Current number of attacks in a combo
+    public float ComboResetTime = .75f; // Time in seconds to reset the combo counter
+    public float ComboCooldown = 1f; // Time between combos in seconds
 
     [Header("Items")]
     public int GrapplingHooks = 0; // Number of grappling hooks (Charges?) the player has

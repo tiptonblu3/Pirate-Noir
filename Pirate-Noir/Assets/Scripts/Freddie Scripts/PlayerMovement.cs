@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Attack Settings")]
     public LayerMask AttackableLayer;
     public bool CanAttack = true; // Whether the player can attack (e.g., not stunned or in a cutscene)
+    private Coroutine ComboResetCoroutine; // Reference to the currently running combo reset coroutine
     #endregion
 
     #region === Animation ===
@@ -351,6 +352,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Context.performed && CanMove && CanAttack) // Only check for Enemies when the attack button is initially pressed
         {
+            if(ComboResetCoroutine != null) // If a combo reset coroutine is already running, stop it so the combo stays active
+            {
+                StopCoroutine(ComboResetCoroutine);
+            }
+
+            Stats.CurrentComboCount++; // Increment the combo count
+            if (Stats.CurrentComboCount > Stats.MaxCombo) // If the combo count exceeds the max, reset it
+            {
+                Stats.CurrentComboCount = 0; // Reset to 0 to start a new combo
+                StartCoroutine(ComboCooldownRoutine()); // Start Attack Cooldown
+                return; // Exit early to prevent attacking when combo is maxed out
+            }
+
+            
+            ComboResetCoroutine = StartCoroutine(ComboResetRoutine()); // Start a new coroutine to reset the combo count after the specified time
+
             // Start Attack Cooldown
             StartCoroutine(AttackCooldownRoutine());
 
@@ -387,6 +404,23 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(Stats.AttackCooldown);
 
         CanAttack = true; // Open the gate
+    }
+
+    private IEnumerator ComboCooldownRoutine()
+    {
+        CanAttack = false; // Close the gate
+
+        yield return new WaitForSeconds(Stats.ComboCooldown);
+
+        CanAttack = true; // Open the gate
+    }
+
+    private IEnumerator ComboResetRoutine()
+    {
+        yield return new WaitForSeconds(Stats.ComboResetTime);
+        Stats.CurrentComboCount = 0; // Reset the combo count after the specified time
+        
+        StartCoroutine(ComboCooldownRoutine()); // Start Attack Cooldown
     }
 
     #region === Animation Logic ===

@@ -2193,6 +2193,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5296888083960991240, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
+      propertyPath: AttackCooldown
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296888083960991240, guid: 987058fafd4f42f4597e5ca12b60de3a, type: 3}
       propertyPath: CurrentStamina
       value: 200
       objectReference: {fileID: 0}
