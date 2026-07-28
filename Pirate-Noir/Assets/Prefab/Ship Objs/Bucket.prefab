@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: -2886872177830045193, guid: bc7201b484cac11438d6db50f12afbfb, type: 3}
       propertyPath: 'm_Materials.Array.data[2]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5dad5ceba29767f438249abd7004e1dc, type: 2}
+      objectReference: {fileID: 2100000, guid: a906c5aeb9d8676478a3ef254882dc8e, type: 2}
     - target: {fileID: 919132149155446097, guid: bc7201b484cac11438d6db50f12afbfb, type: 3}
       propertyPath: m_Name
       value: Bucket
