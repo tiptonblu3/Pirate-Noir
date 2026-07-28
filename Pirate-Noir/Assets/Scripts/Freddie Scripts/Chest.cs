@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class Chest : MonoBehaviour, IInteractable
 {
@@ -22,11 +23,21 @@ public class Chest : MonoBehaviour, IInteractable
     private int ItemSpawnChance = 50; // Chance (in percentage) to spawn an item when the chest is opened
     public List<GameObject> ItemPrefabs;// Prefab list
 
+    [Header("Audio Settings")]
+    public AudioClip ChestLockedSound;
+    public AudioClip ChestOpenSound;
+    public AudioMixerGroup SFXMixerGroup;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player"); // Find the player GameObject by tag
         Stats = Player.GetComponent<PlayerStats>(); // Get the PlayerStats component from the player Game
+        ChestLockedSound = Resources.Load<AudioClip>("AudioClips/ChestLocked"); // Load the break sound clip from the Resources folder
+        ChestOpenSound = Resources.Load<AudioClip>("AudioClips/ChestOpen"); // Load the break sound clip from the Resources folder
+        SFXMixerGroup = Resources.Load<AudioMixer>("MasterVolume").FindMatchingGroups("sfxVolume")[0]; // Load the audio mixer and find the SFX group
+
+
 
         if (Locked)
         {
@@ -60,10 +71,13 @@ public class Chest : MonoBehaviour, IInteractable
                 {
                     SpawnItem(); // Call the SpawnItem method to spawn an item
                 }
+                PlayOpenAudio();
             }
             else
             {
                 Debug.Log("Player does not have any keys to unlock the chest.");
+                PlayLockedAudio();
+
             }
         }
         else
@@ -75,6 +89,7 @@ public class Chest : MonoBehaviour, IInteractable
             {
                 SpawnItem(); // Call the SpawnItem method to spawn an item
             }
+            PlayOpenAudio();
         }
 
         
@@ -91,4 +106,31 @@ public class Chest : MonoBehaviour, IInteractable
         }
     }
 
+    public void PlayOpenAudio() //this is meant to create a temporary audio object to play the sound effect then destroy that audio source object
+    {
+        GameObject TempAudioSource = new GameObject("TempAudio" + ChestOpenSound); // Create a temporary GameObject for the audio source
+        TempAudioSource.transform.position = transform.position; // Set the position of the temporary audio source to the object's position
+
+        AudioSource audioSource = TempAudioSource.AddComponent<AudioSource>(); // Add an AudioSource component to the temporary GameObject
+        audioSource.clip = ChestOpenSound; // Assign the break sound clip to the audio source
+
+        audioSource.outputAudioMixerGroup = SFXMixerGroup; // Assign the audio mixer group to the audio source
+        audioSource.Play(); // Play the break sound effect
+
+        Destroy(TempAudioSource, ChestOpenSound.length); // Destroy the temporary audio source after the sound has finished playing
+    }
+
+    public void PlayLockedAudio() //this is meant to create a temporary audio object to play the sound effect then destroy that audio source object
+    {
+        GameObject TempAudioSource = new GameObject("TempAudio" + ChestLockedSound); // Create a temporary GameObject for the audio source
+        TempAudioSource.transform.position = transform.position; // Set the position of the temporary audio source to the object's position
+
+        AudioSource audioSource = TempAudioSource.AddComponent<AudioSource>(); // Add an AudioSource component to the temporary GameObject
+        audioSource.clip = ChestLockedSound; // Assign the break sound clip to the audio source
+
+        audioSource.outputAudioMixerGroup = SFXMixerGroup; // Assign the audio mixer group to the audio source
+        audioSource.Play(); // Play the break sound effect
+
+        Destroy(TempAudioSource, ChestLockedSound.length); // Destroy the temporary audio source after the sound has finished playing
+    }
 }

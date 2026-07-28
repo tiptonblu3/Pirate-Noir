@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip RunningFootstepClip; // Running footstep sound clip
     public AudioClip JumpClip; // Jump sound clip
     public AudioClip AttackClip; // Attack sound clip
+    public AudioClip HealClip; // drinking rum Clip
     #endregion
 
     #region === UI ===
@@ -334,6 +335,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Context.started && Stats.Rum > 0 && Stats.CurrentHealth < Stats.MaxHealth) // Check if the player has rum and is not at full health
         {
+            if (PlayerActionAudio != null && HealClip != null) // Ensure audio source and clip exist
+            {
+                PlayerActionAudio.PlayOneShot(HealClip); // Play attack sound effect
+            }
+
             Stats.CurrentHealth += 20f; // Heal the player by 20 health points
             if (Stats.CurrentHealth > Stats.MaxHealth) // Ensure health does not exceed max
             {
