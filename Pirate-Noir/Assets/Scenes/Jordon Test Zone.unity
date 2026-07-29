@@ -7167,6 +7167,9 @@ MonoBehaviour:
   GoldAmountMax: 500
   SpawnItemOnOpen: 0
   ItemPrefabs: []
+  ChestLockedSound: {fileID: 0}
+  ChestOpenSound: {fileID: 0}
+  SFXMixerGroup: {fileID: 0}
 --- !u!1001 &1593339882
 PrefabInstance:
   m_ObjectHideFlags: 0
