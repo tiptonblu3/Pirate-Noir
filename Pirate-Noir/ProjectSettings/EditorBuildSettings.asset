@@ -23,10 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UIScenes/Credits.unity
     guid: c085a66f416bfe74bb5f10cc71a1bc61
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Freddie Test Zone.unity
     guid: f09c9d0b4f5969b4b815503adeedafa9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Jordon Test Zone.unity
     guid: eb55ac9f0c9ee4f418b8a4b694ce447c
   - enabled: 1

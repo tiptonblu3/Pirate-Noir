@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 1ae8cbbbefa76d743963659c29054f68, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: e972b858714f4af4a87895bd4cd5318a, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1213,7 +1213,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 4a837c0f55398934082edabe38fe9512, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1559,25 +1559,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Producer & Programmer: Freddie Brailsford
-
-
-    Programmer & Tech Artist:
-    Jordon Dubin
-
-
-    Optimization Programmer & General Programmer : Juan Martinez
-
-
-    Character
-    Modeling Artist: Noel De La Cruz
-
-
-    2D Artist: Isis Bonano Colon
-
-
-    3D
-    Artist: Florencia Orzejovsky'
+  m_text: "Producer & Programmer: Freddie Brailsford\n\nProgrammer & Tech Artist:
+    Jordon Dubin\n\nEnemy Programmer & General Programmer : Juan Martinez\n\nCharacter
+    Modeling Artist: Noel De La Cruz\n\n2D Artist: Isis Colon Bonano \n\n3D Artist:
+    Florencia Orzejovsky"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2161,7 +2146,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6004e0e862b7b5b4aa8c816cab52d775, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3abc2792aa644324d94d520fedb3ec9e, type: 2}
+      objectReference: {fileID: 2100000, guid: 4f1ef37ae953c484bbc5d5e4049147e5, type: 2}
     - target: {fileID: 919132149155446097, guid: 6004e0e862b7b5b4aa8c816cab52d775, type: 3}
       propertyPath: m_Name
       value: FloorPlanks (10)
@@ -2586,7 +2571,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 6004e0e862b7b5b4aa8c816cab52d775, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3abc2792aa644324d94d520fedb3ec9e, type: 2}
+      objectReference: {fileID: 2100000, guid: 4f1ef37ae953c484bbc5d5e4049147e5, type: 2}
     - target: {fileID: 919132149155446097, guid: 6004e0e862b7b5b4aa8c816cab52d775, type: 3}
       propertyPath: m_Name
       value: FloorPlanks (9)
