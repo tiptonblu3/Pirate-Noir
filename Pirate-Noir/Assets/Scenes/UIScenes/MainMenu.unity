@@ -833,7 +833,6 @@ GameObject:
   - component: {fileID: 750818041}
   - component: {fileID: 750818040}
   - component: {fileID: 750818039}
-  - component: {fileID: 750818043}
   - component: {fileID: 750818042}
   m_Layer: 5
   m_Name: QuitButton
@@ -997,18 +996,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &750818043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750818037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &803896201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,7 +1880,6 @@ GameObject:
   - component: {fileID: 1511264629}
   - component: {fileID: 1511264628}
   - component: {fileID: 1511264627}
-  - component: {fileID: 1511264631}
   - component: {fileID: 1511264630}
   m_Layer: 5
   m_Name: CreditsButton
@@ -2057,18 +2043,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1511264631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511264625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1527499029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2082,7 +2056,6 @@ GameObject:
   - component: {fileID: 1527499032}
   - component: {fileID: 1527499031}
   - component: {fileID: 1527499034}
-  - component: {fileID: 1527499035}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2245,18 +2218,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1527499035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1527499029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1601116914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,7 +2535,6 @@ GameObject:
   - component: {fileID: 1911520036}
   - component: {fileID: 1911520035}
   - component: {fileID: 1911520034}
-  - component: {fileID: 1911520038}
   - component: {fileID: 1911520037}
   m_Layer: 5
   m_Name: AchivementsButton
@@ -2738,18 +2698,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1911520038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911520032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1984822888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,7 +2711,6 @@ GameObject:
   - component: {fileID: 1984822891}
   - component: {fileID: 1984822890}
   - component: {fileID: 1984822893}
-  - component: {fileID: 1984822894}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -2926,18 +2873,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1984822894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984822888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1985427485
 GameObject:
   m_ObjectHideFlags: 0

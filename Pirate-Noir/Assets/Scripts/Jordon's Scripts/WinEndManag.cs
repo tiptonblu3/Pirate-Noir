@@ -71,6 +71,11 @@ public class WinEndManag : MonoBehaviour
         stambar.FadeOutSprint();
         healthbar.FadeOutHealth();
 
+        PauseManagement.RumObj.SetActive(false);
+        PauseManagement.GoldObj.SetActive(false);
+        PauseManagement.KeyObj.SetActive(false);
+
+
         Cursor.lockState = CursorLockMode.None; //unlock cursor so the player can click on the buttons
         Cursor.visible = true;
         
@@ -97,6 +102,11 @@ public class WinEndManag : MonoBehaviour
         PauseManagement.RumUI.enabled = false;
         PauseManagement.GoldUI.enabled = false;
         PauseManagement.KeyUI.enabled = false;
+
+        PauseManagement.RumObj.SetActive(false);
+        PauseManagement.GoldObj.SetActive(false);
+        PauseManagement.KeyObj.SetActive(false);
+
 
         stambar.FadeOutSprint();
         healthbar.FadeOutHealth();

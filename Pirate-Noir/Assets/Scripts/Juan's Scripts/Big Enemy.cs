@@ -2,12 +2,16 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 
 public class BigEnemy : Enemy
 {
     public int poolSize = 10;
     public GameObject AOECube;
     public List<GameObject> AOElist = new List<GameObject>(); // list of the AOE objects to pool
+
+    [Header("Audio Settings")]
+    public AudioClip AOESound; // Reference to the AOE sound clip
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
@@ -21,6 +25,9 @@ public class BigEnemy : Enemy
             obj.SetActive(false);
             AOElist.Add(obj);
         }
+
+        AOESound = Resources.Load<AudioClip>("AudioClips/AOESound"); // Load the break sound clip from the Resources folder        
+
     }
 
     // Update is called once per frame
@@ -40,6 +47,7 @@ public class BigEnemy : Enemy
 
     public void SpawnAOE(Vector3 position, Vector3 direction) //helps with spawning the object for the AOE
     {
+
         GameObject obj = GetPooledAOE();
         if(obj != null)
         {
@@ -62,6 +70,9 @@ public class BigEnemy : Enemy
         Vector3 center = transform.position; // get the center of the enemy for the AOE
         Vector3 front = transform.forward; // get the front of the enemy for the AOE, this will probably change in later versions
         Vector3 right = transform.right; // get the right of the enemy for the AOE, this will probably change in later versions
+
+        audioSource.PlayOneShot(AOESound);
+
 
         SpawnAOE(center + front * 2, front);
         SpawnAOE(center - front * 2, -front); // spawn object behind enemy

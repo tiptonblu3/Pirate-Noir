@@ -12,7 +12,7 @@ public class RangedEnemy : Enemy
 
     private float timer; //will be used for the attack code
 
-    
+    public AudioClip ThrowingSound;
 
     public override void Start()
     {
@@ -25,6 +25,8 @@ public class RangedEnemy : Enemy
             obj.SetActive(false);
             ProjectileList.Add(obj);
         }
+        ThrowingSound = Resources.Load<AudioClip>("AudioClips/sfx_throw"); // Load the break sound clip from the Resources folder        
+
     }
     
 
@@ -63,6 +65,10 @@ public class RangedEnemy : Enemy
 
     public override IEnumerator AttackPlayer()
     {
+
+        audioSource.PlayOneShot(ThrowingSound);
+
+
         IsDoingAction = true;
         //Sword.SetActive(true);
         agent.speed = 0;

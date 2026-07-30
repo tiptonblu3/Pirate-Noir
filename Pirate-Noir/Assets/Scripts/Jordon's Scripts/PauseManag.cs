@@ -55,7 +55,9 @@ public class PauseManagement : MonoBehaviour
     public TextMeshProUGUI RumUI;
     public TextMeshProUGUI GoldUI;
     public TextMeshProUGUI KeyUI;
-    
+    public GameObject RumObj;
+    public GameObject GoldObj;
+    public GameObject KeyObj;
 
 
     [Space(10)]
@@ -199,6 +201,10 @@ public class PauseManagement : MonoBehaviour
         GoldUI.enabled = false;
         KeyUI.enabled = false;
 
+        RumObj.SetActive(false);
+        GoldObj.SetActive(false);
+        KeyObj.SetActive(false);
+
 
         Cursor.lockState = CursorLockMode.None; //unlock cursor so the player can click on the buttons
         Cursor.visible = true;
@@ -237,6 +243,10 @@ public class PauseManagement : MonoBehaviour
         RumUI.enabled = true;
         GoldUI.enabled = true;
         KeyUI.enabled = true;
+        
+        RumObj.SetActive(true);
+        GoldObj.SetActive(true);
+        KeyObj.SetActive(true);
         
         Time.timeScale = 1f;
 

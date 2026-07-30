@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.Audio;
 
 
 public class Enemy : MonoBehaviour
@@ -78,6 +78,15 @@ public class Enemy : MonoBehaviour
     public GameObject pickupItem4;
 
     public Animator animator;
+
+    [Header("Audio Settings")]
+    public AudioClip DeathSound; // Reference to the break sound clip
+    public AudioMixerGroup SFXMixerGroup;
+    public AudioClip AttackSound; // Reference to the break sound clip
+    public AudioSource audioSource;
+    
+
+
     #endregion
 
 
@@ -88,8 +97,12 @@ public class Enemy : MonoBehaviour
         maxHealth = health;
         Sword.SetActive(false); // sword is disabled at the start, will be enabled when attacking, this will probably change in later versions
 
-        
-        
+        SFXMixerGroup = Resources.Load<AudioMixer>("MasterVolume").FindMatchingGroups("sfxVolume")[0]; // Load the audio mixer and find the SFX group
+        DeathSound = Resources.Load<AudioClip>("AudioClips/DeathEnemy"); // Load the break sound clip from the Resources folder        
+        AttackSound = Resources.Load<AudioClip>("AudioClips/EnemySwing"); // Load the break sound clip from the Resources folder        
+        audioSource = GetComponent<AudioSource>();
+
+
         AttackPhaseSqrRange = AttackPhaseRange * AttackPhaseRange;
         FarSqrRange = FarRange * FarRange;
         stopAttackSqrRange = stopAttackRange * stopAttackRange;
@@ -284,9 +297,9 @@ public class Enemy : MonoBehaviour
     public virtual void EnemyDied()
     {
         int itemDropChance;
-
+        PlayAudio();
         itemDropChance = Random.Range(0,100);
-
+        
         if (itemDropChance < 15)
         {
             Instantiate(pickupItem1, transform.position, Quaternion.identity); 
@@ -331,6 +344,8 @@ public class Enemy : MonoBehaviour
         agent.speed = speed;
         agent.SetDestination(Player.position); // if strafing, there's a chance enemy might stay circling the player, so I'm putting this here.    
         
+        audioSource.PlayOneShot(AttackSound);
+
         yield return new WaitForSeconds(AttackDuration);
 
         Sword.SetActive(false);
@@ -610,5 +625,28 @@ public class Enemy : MonoBehaviour
 
     #endregion
 
-    
+    public void PlayAudio() //this is meant to create a temporary audio object to play the sound effect then destroy that audio source object
+    {
+        GameObject TempAudioSource = new GameObject("TempAudio" + DeathSound); // Create a temporary GameObject for the audio source
+        TempAudioSource.transform.position = transform.position; // Set the position of the temporary audio source to the object's position
+
+        AudioSource audioSource = TempAudioSource.AddComponent<AudioSource>(); // Add an AudioSource component to the temporary GameObject
+        audioSource.clip = DeathSound; // Assign the break sound clip to the audio source
+
+        audioSource.outputAudioMixerGroup = SFXMixerGroup; // Assign the audio mixer group to the audio source
+        audioSource.Play(); // Play the break sound effect
+
+        Destroy(TempAudioSource, DeathSound.length); // Destroy the temporary audio source after the sound has finished playing
+        
+        // --- 3D AUDIO SETTINGS ---
+        audioSource.spatialBlend = 1.0f; // 0.0f = 2D (flat), 1.0f = Full 3D Spatial Audio
+        
+        // Optional 3D distance settings:
+        audioSource.minDistance = 1.0f;  // Distance where the sound starts to fade
+        audioSource.maxDistance = 50.0f; // Distance where the sound becomes inaudible
+        audioSource.rolloffMode = AudioRolloffMode.Logarithmic; // Fading behavior over distance
+        // -------------------------
+    }
+
+
 }
