@@ -833,6 +833,7 @@ GameObject:
   - component: {fileID: 750818041}
   - component: {fileID: 750818040}
   - component: {fileID: 750818039}
+  - component: {fileID: 750818043}
   - component: {fileID: 750818042}
   m_Layer: 5
   m_Name: QuitButton
@@ -944,7 +945,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 23.56, y: 21.59, z: 77.4, w: 14.13}
+  m_RaycastPadding: {x: 10.1, y: 3.3, z: 6.7, w: 5.4}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -996,6 +997,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &750818043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750818037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &803896201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,9 +1527,9 @@ RectTransform:
   - {fileID: 1601116915}
   m_Father: {fileID: 1175410982}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -781.0851, y: -111.25}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 178.91492, y: -651.25}
   m_SizeDelta: {x: 1347.7847, y: 700.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1392783777
@@ -1880,6 +1893,7 @@ GameObject:
   - component: {fileID: 1511264629}
   - component: {fileID: 1511264628}
   - component: {fileID: 1511264627}
+  - component: {fileID: 1511264631}
   - component: {fileID: 1511264630}
   m_Layer: 5
   m_Name: CreditsButton
@@ -1991,7 +2005,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 32.06, y: 30.23, z: 102.03, w: 19.2}
+  m_RaycastPadding: {x: 7.9, y: 3.8, z: 6.3, w: 4.9}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2043,6 +2057,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1511264631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511264625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1527499029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,6 +2082,7 @@ GameObject:
   - component: {fileID: 1527499032}
   - component: {fileID: 1527499031}
   - component: {fileID: 1527499034}
+  - component: {fileID: 1527499035}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -2166,7 +2193,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 29.75, y: 31.79, z: 93.77, w: 19.91}
+  m_RaycastPadding: {x: 11, y: 4.57, z: 7.7, w: 4.92}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2218,6 +2245,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1527499035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527499029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1601116914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,9 +2557,9 @@ RectTransform:
   - {fileID: 750818038}
   m_Father: {fileID: 1175410982}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1037, y: -111.25}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -77, y: -651.25}
   m_SizeDelta: {x: 835.95483, y: 700.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1911520032
@@ -2535,6 +2574,7 @@ GameObject:
   - component: {fileID: 1911520036}
   - component: {fileID: 1911520035}
   - component: {fileID: 1911520034}
+  - component: {fileID: 1911520038}
   - component: {fileID: 1911520037}
   m_Layer: 5
   m_Name: AchivementsButton
@@ -2646,7 +2686,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 51.2, y: 30.29, z: 171.68, w: 17.04}
+  m_RaycastPadding: {x: 10.5, y: 5.1, z: 7, w: 4.8}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2698,6 +2738,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1911520038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911520032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1984822888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2711,6 +2763,7 @@ GameObject:
   - component: {fileID: 1984822891}
   - component: {fileID: 1984822890}
   - component: {fileID: 1984822893}
+  - component: {fileID: 1984822894}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -2821,7 +2874,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 29.73, y: 27.63, z: 97.79, w: 19.74}
+  m_RaycastPadding: {x: 12.14, y: 4.1, z: 8.7, w: 8.8}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2873,6 +2926,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1984822894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984822888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa3dad243255774db141170a542137e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::raycastpaddinggizmo
 --- !u!1 &1985427485
 GameObject:
   m_ObjectHideFlags: 0
